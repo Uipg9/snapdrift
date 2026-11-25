@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "snapdrift",
+	"version": "${version}",
+	"name": "Snapdrift",
+	"description": "Repeatable FPS benchmarks (/snapdrift bench) and Windows-on-ARM setup checks for performance tuning.",
+	"authors": [
+		"Uipg9"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/snapdrift/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.brian.snapdrift.client.SnapdriftClient"
+		],
+		"fabric-client-gametest": [
+			"dev.brian.snapdrift.client.SnapdriftClientGameTest"
+		]
+	},
+	"mixins": [
+		{
+			"config": "snapdrift.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
