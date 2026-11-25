@@ -106,3 +106,11 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+// Optional: boot extra mod jars in the client gametest, e.g. -PextraMods=C:\path\to\mods
+// (used by the pack's boot-test script; the gametest run dir is wiped, so mods/ cannot be used).
+if (project.hasProperty("extraMods")) {
+	tasks.matching { it.name == "runClientGameTest" }.configureEach {
+		jvmArgs "-Dfabric.addMods=${project.property('extraMods')}"
+	}
+}
