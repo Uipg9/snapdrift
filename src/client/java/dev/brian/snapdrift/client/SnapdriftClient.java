@@ -21,6 +21,8 @@ public class SnapdriftClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		ClientTickEvents.END_CLIENT_TICK.register(BenchController::onTick);
+		AutoBench.init();
+		ClientTickEvents.END_CLIENT_TICK.register(AutoBench::onTick);
 		ClientPlayConnectionEvents.JOIN.register((handler, sender, mc) -> mc.execute(() -> EnvironmentNotice.onJoin(mc)));
 
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, buildContext) -> dispatcher.register(

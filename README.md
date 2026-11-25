@@ -18,6 +18,18 @@ Results are appended to `<game dir>\snapdrift\bench\results.csv`, one row per ru
 p99 and max frame time, render and simulation distance, VSync, FPS limit, GPU device, backend, Java arch,
 heap size, loaded performance mods and the route start. Every row says which setup produced it.
 
+### Unattended runs (autobench)
+Start the game with these JVM properties and it opens the world from the title screen, runs every step, and quits:
+
+| Property | Meaning |
+|---|---|
+| `snapdrift.autobench.world` | save folder to open (enables autobench) |
+| `snapdrift.autobench.plan` | steps `name[@renderDistance][xRepeats]`, comma-separated, e.g. `warmup20@20,rd20@20x3` |
+| `snapdrift.autobench.seconds` | flight length per run (default 60) |
+| `snapdrift.autobench.settle` | seconds to wait after joining or changing render distance (default 30) |
+
+Pause-on-focus-loss and the AFK frame limiter are switched off for the session, so the run needs nobody at the keyboard.
+
 Environment warnings are always written to the log. They appear in chat once, and again only when they change.
 
 ### Benchmark controls
