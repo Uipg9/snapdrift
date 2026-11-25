@@ -91,9 +91,12 @@ public final class AutoBench {
 			mc.stop();
 			return;
 		}
+		// Changing render distance mid-session does not fully apply (measured: RD 12 -> 32 at runtime gave
+		// ~220 fps, a fresh launch at 32 gives ~41). So "@rd" is only an assertion: set it in options.txt.
 		if (step.renderDistance() > 0 && mc.options.renderDistance().get() != step.renderDistance()) {
-			mc.options.renderDistance().set(step.renderDistance());
-			Snapdrift.LOGGER.info("[autobench] render distance -> {}", step.renderDistance());
+			fail(mc, "step '" + step.name() + "' expects render distance " + step.renderDistance() + " but the game is at "
+				+ mc.options.renderDistance().get() + ": set renderDistance in options.txt and relaunch");
+			return;
 		}
 		timer = settleTicks;
 		phase = Phase.SETTLING;

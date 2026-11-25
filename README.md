@@ -24,7 +24,7 @@ Start the game with these JVM properties and it opens the world from the title s
 | Property | Meaning |
 |---|---|
 | `snapdrift.autobench.world` | save folder to open (enables autobench) |
-| `snapdrift.autobench.plan` | steps `name[@renderDistance][xRepeats]`, comma-separated, e.g. `warmup20@20,rd20@20x3` |
+| `snapdrift.autobench.plan` | steps `name[@renderDistance][xRepeats]`, comma-separated, e.g. `warmup@20,rd20@20x3`. `@renderDistance` only checks the current value: changing render distance mid-session does not fully apply, so set it in options.txt before launching |
 | `snapdrift.autobench.seconds` | flight length per run (default 60) |
 | `snapdrift.autobench.settle` | seconds to wait after joining or changing render distance (default 30) |
 
